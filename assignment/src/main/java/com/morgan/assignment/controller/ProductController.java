@@ -2,9 +2,9 @@ package com.morgan.assignment.controller;
 
 
 import com.morgan.assignment.model.Product;
-import com.morgan.assignment.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.context.ApplicationContext;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,34 +12,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
+    Product obj = new Product();
 
-    @Autowired
-    private ProductService productService;
-
-    @GetMapping
-    public List<Product> getAllProduct() {
-        return productService.getAllProducts();
+    public ProductController(){
     }
 
-    @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
-        return productService.getProductById(id);
-    }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Product createProduct(@RequestBody Product product) {
-        return productService.createProduct(product);
-    }
-
-    @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
-        return productService.updateProduct(id, productDetails);
-    }
-
-    @DeleteMapping("/{id}")
-    public String deleteProduct(@PathVariable Long id) {
-        productService.deleteProduct(id);
-        return "deleted product " + id;
+    @GetMapping("/getProduct")
+    public String getProduct(){
+        return obj.getName();
     }
 }
