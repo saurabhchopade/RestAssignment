@@ -4,12 +4,15 @@ package com.morgan.assignment.model;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-
+@Component
 public class Product {
 
         String name = "Mobile Phone";
-        int id;
 
+
+        Product(){
+                System.out.println("Product is Created ");
+        }
         public String getName() {
                 return name;
         }
@@ -18,11 +21,5 @@ public class Product {
                 this.name = name;
         }
 
-        public int getId() {
-                return id;
-        }
 
-        public void setId(int id) {
-                this.id = id;
-        }
 }
